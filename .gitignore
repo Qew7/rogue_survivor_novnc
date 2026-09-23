@@ -1,0 +1,14 @@
+# Track only the container wrapper, never game sources, assets or saves.
+/*
+!/.gitignore
+!/.dockerignore
+!/Dockerfile
+!/compose.yaml
+!/README.md
+!/docker/
+/docker/*
+!/docker/build.py
+!/docker/prepare.py
+!/docker/csc
+!/docker/entrypoint.sh
+!/docker/index.html
