@@ -7,8 +7,8 @@
 !/README.md
 !/docker/
 /docker/*
-!/docker/build.py
-!/docker/prepare.py
+!/docker/build.rb
+!/docker/prepare.rb
 !/docker/csc
 !/docker/entrypoint.sh
 !/docker/index.html

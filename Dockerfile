@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim AS build
-RUN apt-get update && apt-get install -y --no-install-recommends mono-devel python3 \
+RUN apt-get update && apt-get install -y --no-install-recommends mono-devel ruby ruby-rexml \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /src/WRogue
 COPY WRogue/ ./
-COPY docker/build.py /build.py
-COPY docker/prepare.py /prepare.py
+COPY docker/build.rb /build.rb
+COPY docker/prepare.rb /prepare.rb
 COPY docker/csc /usr/local/bin/csc
-RUN chmod +x /usr/local/bin/csc && python3 /build.py \
+RUN chmod +x /usr/local/bin/csc && ruby /build.rb \
     && MONO_IOMAP=all xbuild RogueSurvivor.Linux.csproj /p:Configuration=Release \
        /p:CscToolPath=/usr/local/bin /p:CscToolExe=csc /verbosity:minimal
 
